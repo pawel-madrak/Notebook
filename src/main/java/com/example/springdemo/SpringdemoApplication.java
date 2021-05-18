@@ -1,7 +1,6 @@
 package com.example.springdemo;
 
-import com.example.springdemo.entity.Note;
-import com.example.springdemo.repository.NoteDao;
+
 import com.example.springdemo.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -16,9 +15,6 @@ import java.util.List;
 @SpringBootApplication
 public class SpringdemoApplication {
 
-    @Autowired
-    NoteDao noteDao;
-
 
     @Autowired
     NoteService noteService;
@@ -32,7 +28,6 @@ public class SpringdemoApplication {
 
 
 
-//        noteService.addNote("costam1", "costam2");
     }
 
 }
