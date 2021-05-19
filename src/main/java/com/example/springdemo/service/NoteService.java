@@ -16,17 +16,16 @@ public class NoteService {
     @Autowired
     NoteRepository noteRepository;
 
-    public List<Note> printNotes() {
+    public List<Note> getNotes() {
 
         return noteRepository.findAll();
   }
 
-    public void createAndAddNote(String title, String content){
-        noteRepository.save(new Note(title,content));
-
-    }
     public void updateNote(Integer id, String title, String content){
-
+       Note noteToUpdate = noteRepository.findById(id).get();
+       noteToUpdate.setTitle(title);
+       noteToUpdate.setContext(content);
+       noteRepository.save(noteToUpdate);
     }
 
     public void addNote(Note note) {
@@ -36,6 +35,7 @@ public class NoteService {
     public Optional<Note> findById(Integer id) {
         return noteRepository.findById(id);
     }
+
     public void deleteById(Integer id) {
         noteRepository.deleteById(id);
     }

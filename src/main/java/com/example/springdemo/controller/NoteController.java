@@ -1,6 +1,4 @@
 package com.example.springdemo.controller;
-
-
 import com.example.springdemo.entity.Note;
 import com.example.springdemo.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +14,15 @@ public class NoteController {
 
 
     @RequestMapping(value = "/notes", method = RequestMethod.GET)
-    public String printNotes(@ModelAttribute("model") ModelMap model) {
-        model.addAttribute("noteList", noteService.printNotes());
+    public String getNotes(@ModelAttribute("model") ModelMap model) {
+        model.addAttribute("noteList", noteService.getNotes());
         return "index";
     }
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addNote(@ModelAttribute("note") Note note, ModelMap model) {
         if (null != note) {
             noteService.addNote(note);
-            model.addAttribute("noteList", noteService.printNotes());
+            model.addAttribute("noteList", noteService.getNotes());
         }
         return "redirect:/notes";
     }
@@ -33,22 +31,15 @@ public class NoteController {
         noteService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
         noteService.deleteById(id);
-        model.addAttribute("noteList", noteService.printNotes());
+        model.addAttribute("noteList", noteService.getNotes());
         return "index";
     }
 
 
-
-/*    @RequestMapping(value = "/notes", method = RequestMethod.DELETE)
-    public void deleteNote(@RequestParam("id") Integer id){
-       noteService.deleteNote(id);
-    }*/
-    /*@RequestMapping(value = "/notes", method = RequestMethod.POST)
-    public void addNote(@RequestParam("title") String title, @RequestParam("content") String content){
-        noteService.addNote(title, content);
-    }*/
-    @RequestMapping(value = "/notes", method = RequestMethod.PUT)
-    public void updateNote(@RequestParam("id") Integer id, @RequestParam("title") String title, @RequestParam("content") String content){
+    @RequestMapping(value = "/notes/{id}", method = RequestMethod.PUT)
+    public String updateNote(@PathVariable Integer id, @RequestParam("title") String title, @RequestParam("edtContext") String content, ModelMap model){
         noteService.updateNote(id, title, content);
+        model.addAttribute("noteList", noteService.getNotes());
+        return "index";
     }
 }

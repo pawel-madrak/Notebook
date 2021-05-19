@@ -11,7 +11,7 @@
     <h2>your notes</h2>
 </div>
 <div class="addnote">
-    <a href="#"  note-add-button onclick="showModal()">Add note</a>
+    <a href="#"  note-add-button onclick="showAddModal()">Add note</a>
 </div>
 <div id="content">
     <table class="datatable">
@@ -35,23 +35,37 @@
         <p class="board__content__context"></p>
 
     </div>
-    <button onclick="deleteNote()">delete</button>
-    <button>edit</button>
+    <button class=" button-del js-hidden" onclick="deleteNote()">delete</button>
+    <button class=" button-edt js-hidden" onclick="showUpdateModal()">edit</button>
 </div>
 
 
-<div class="modal modal--hidden">
+<div class="addModal modal modal--hidden">
     <form class="modal__form" action="/add" method="post" name="note">
-        <button class="modal__button-close" data-button-close type="button" aria-label="Close form" onclick="closeModal()">
+        <button class="modal__button-close" data-button-close type="button" aria-label="Close form" onclick="closeAddModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <label for="" class="modal__label">Enter title: </label>
+        <input type="text" class="modal__input" name="title" required>
+        <label for="" class="modal__label">Enter context: </label>
+        <textarea  rows="40" cols="80" class="modal__input" name="context">Input your note.. </textarea>
+        <button type="submit" value="Save" class="modal__button-submit" data-button-submit>Add</button>
+    </form>
+</div>
+<div class="updateModal modal modal--hidden">
+    <form id="editForm" class="modal__form" action="/notes/" method="put" name="note">
+        <button class="modal__button-close" data-button-close type="button" aria-label="Close form" onclick="closeUpdateModal()">
             <span aria-hidden="true">&times;</span>
         </button>
         <label for="" class="modal__label">Enter title: </label>
         <input type="text" class="modal__input" name="title" id="title" required>
         <label for="" class="modal__label">Enter context: </label>
-        <textarea  rows="40" cols="80" class="modal__input" name="context" id="context">Input your note.. </textarea>
-        <button type="submit" value="Save" class="modal__button-submit" data-button-submit>Add</button>
+        <textarea  rows="40" cols="80" class="modal__input" name="edtContext" id="context">Input your note.. </textarea>
+        <button type="button" value="Update" class="modal__button-submit" data-button-submit onclick="editNote()">Update</button>
     </form>
 </div>
+
+
 </body>
 
 </html>
