@@ -5,13 +5,15 @@ const modalCloseButton = document.querySelector("[data-button-close]");
 const selectedNote = document.querySelectorAll(".box");
 const delButton = document.querySelector(".button-del");
 const edtButton = document.querySelector(".button-edt");
+const signUpModal = document.querySelector(".signUpModal");
 idOfNote = "";
 
 const showAddModal = () => addModal.classList.remove("modal--hidden");
 const showUpdateModal = () => updateModal.classList.remove("modal--hidden");
+const showSignUpModal = () => signUpModal.classList.remove("modal--hidden");
 const closeAddModal = () => addModal.classList.add("modal--hidden");
 const closeUpdateModal = () => updateModal.classList.add("modal--hidden");
-
+const closeSignUpModal = () => signUpModal.classList.add("modal--hidden");
 
 function showNote() {
     selectedNote.forEach(note => note.addEventListener("click", () => {
