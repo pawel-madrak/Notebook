@@ -7,9 +7,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 </head>
 <body>
+<div>
 <div id="header">
     <h2>your notes</h2>
 </div>
+<div>
+    <form  method="post" action="/logout">
+        <button class="modal__button-submit" type="submit">Logout</button>
+
+    </form>
+</div>
+    </div>
 <div class="addnote">
     <a href="#"  note-add-button onclick="showAddModal()">Add note</a>
 </div>
