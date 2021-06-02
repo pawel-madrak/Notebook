@@ -1,6 +1,7 @@
 package com.example.springdemo.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -18,6 +19,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+
     protected User(){ }
 
     public User(String username, String email, String password){
@@ -25,6 +27,11 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
 
     public String getUsername() {
         return username;

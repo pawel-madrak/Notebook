@@ -27,7 +27,7 @@
     </form>
 </div>
 <div class="signUpModal modal modal--hidden">
-    <form id="signUpForm" class="modal__form" action="/add-user" method="post" name="user">
+    <form id="signUpForm" class="modal__form" action="/add-user" method="post" name="new-user">
         <button class="modal__button-close" data-button-close type="button" aria-label="Close form" onclick="closeSignUpModal()">
             <span aria-hidden="true">&times;</span>
         </button>

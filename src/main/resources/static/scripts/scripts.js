@@ -27,21 +27,18 @@ function showNote() {
 function deleteNote() {
     $.ajax({
         url: '/notes/' + idOfNote,
-        type: 'DELETE',
-        success: function(result) {
-        console.log("usunieto");
-        location.reload();
-        }
-    });
+        type: 'DELETE'})
+            .then( function () { location.reload(); })
+            .then( function () { return confirm('Pokoj usuniety') })
+            .catch(function (err) { console.log(err) });
     }
 
 function editNote() {
-        $.ajax({url: '/notes/'+idOfNote, type: 'PUT', data:$("#editForm").serialize()})
-            .then( function () {
-                location.reload();
-            }).then( function () {
-            return confirm('Pokoj zaktualizowany')
-        }).catch(function (err) {
-            console.log(err)
-        })
+        $.ajax({
+            url: '/notes/'+idOfNote,
+            type: 'PUT',
+            data:$("#editForm").serialize()})
+                .then( function () { location.reload(); })
+                .then( function () { return confirm('Pokoj zaktualizowany') })
+                .catch(function (err) { console.log(err) })
     }

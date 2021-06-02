@@ -49,7 +49,7 @@
 
 
 <div class="addModal modal modal--hidden">
-    <form class="modal__form" action="/add" method="post" name="note">
+    <form class="modal__form" action="/notes" method="post" name="note">
         <button class="modal__button-close" data-button-close type="button" aria-label="Close form" onclick="closeAddModal()">
             <span aria-hidden="true">&times;</span>
         </button>

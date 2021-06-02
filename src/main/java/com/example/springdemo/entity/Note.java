@@ -16,7 +16,21 @@ public class Note {
     @Column(name = "tresc")
     private String context;
 
+    @ManyToOne()
+    @JoinColumn(name="user_id", updatable = false)
+    private User user;
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Note() { }
+
 
     public String getTitle() {
         return title;
@@ -34,9 +48,10 @@ public class Note {
         this.context = context;
     }
 
-    public Note(String title, String context) {
+    public Note(String title, String context, User user) {
         this.title = title;
         this.context = context;
+        this.user = user;
     }
 
     public Integer getId() {
