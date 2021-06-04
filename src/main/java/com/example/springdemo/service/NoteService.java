@@ -20,10 +20,6 @@ public class NoteService {
     @Autowired
     NoteRepository noteRepository;
 
-    public List<Note> getNotes() {
-
-        return noteRepository.findAll();
-  }
 
     public void updateNote(Integer id, String title, String context){
        Note noteToUpdate = noteRepository.findById(id).get();
@@ -48,4 +44,7 @@ public class NoteService {
        return noteRepository.findAllByUser(user);
     }
 
+    public Optional<Note> findByUserAndId(User user, Integer id) {
+        return Optional.ofNullable(noteRepository.findByUserAndId(user, id));
+    }
 }
