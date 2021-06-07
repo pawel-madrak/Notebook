@@ -32,6 +32,7 @@
                 <td>${note.title}</td>
                 <td>${note.context}</td>
                 <td class="js-hidden">${note.id}</td>
+                <td class="js-hidden">${note.importance}</td>
             </tr>
         </#list>
     </table>
@@ -57,6 +58,12 @@
         <input type="text" class="modal__input" name="title" required>
         <label for="" class="modal__label">Enter context: </label>
         <textarea  rows="40" cols="80" class="modal__input" name="context">Input your note.. </textarea>
+        <label for="importance">Select an importance: </label>
+        <select name="importance" id="importance" required>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+        </select>
         <button type="submit" value="Save" class="modal__button-submit" data-button-submit>Add</button>
     </form>
 </div>

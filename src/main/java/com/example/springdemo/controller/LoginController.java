@@ -38,7 +38,7 @@ public class LoginController {
     }
     @RequestMapping(value = "/", method = RequestMethod.GET)
     ModelAndView forwardToLogin(){
-        return new ModelAndView("forward:/login");
+        return new ModelAndView("redirect:/login");
     }
 
 }
