@@ -40,11 +40,20 @@ public class NoteService {
         noteRepository.deleteById(id);
     }
 
-    public List<Note> getUserNotes(User user) {
+    public List<Note> findAllByUser(User user) {
        return noteRepository.findAllByUser(user);
     }
 
     public Optional<Note> findByUserAndId(User user, Integer id) {
         return Optional.ofNullable(noteRepository.findByUserAndId(user, id));
+    }
+    public List<Note> findAllByUserOrderByImportanceDesc(User user){
+        return  noteRepository.findAllByUserOrderByImportanceDesc(user);
+    }
+    public List<Note> findAllByUserOrderByCreatedDesc(User user){
+        return  noteRepository.findAllByUserOrderByCreatedDesc(user);
+    }
+    public List<Note> findAllByUserOrderByTitle(User user){
+        return  noteRepository.findAllByUserOrderByTitle(user);
     }
 }

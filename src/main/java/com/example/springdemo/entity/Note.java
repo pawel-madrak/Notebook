@@ -1,6 +1,7 @@
 package com.example.springdemo.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 
@@ -11,16 +12,17 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
+    @NotBlank(message = "Title cannot be empty")
     private String title;
 
-    @Column(name = "context")
+    @Column(name = "context", nullable = false)
     private String context;
 
-    @Column(name = "importance")
+    @Column(name = "importance", nullable = false)
     private Integer importance;
 
-    @Column(name = "date")
+    @Column(name = "created")
     private LocalDateTime created;
 
     @ManyToOne()
@@ -84,4 +86,5 @@ public class Note {
     public void setImportance(Integer importance) {
         this.importance = importance;
     }
+
 }

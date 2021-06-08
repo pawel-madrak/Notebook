@@ -12,7 +12,9 @@ public interface NoteRepository extends JpaRepository<Note,Integer> {
 
     List<Note> findAllByUser(User user);
 
-    Note findNoteById(Integer id);
-
     Note findByUserAndId(User user, Integer id);
+
+    List<Note> findAllByUserOrderByImportanceDesc(User user);
+    List<Note> findAllByUserOrderByCreatedDesc(User user);
+    List<Note> findAllByUserOrderByTitle(User user);
 }

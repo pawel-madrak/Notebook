@@ -2,7 +2,6 @@ package com.example.springdemo.controller;
 import com.example.springdemo.entity.MyUserDetails;
 import com.example.springdemo.entity.Note;
 import com.example.springdemo.entity.User;
-import com.example.springdemo.repository.NoteRepository;
 import com.example.springdemo.repository.UserRepository;
 import com.example.springdemo.service.NoteService;
 import com.example.springdemo.service.UserService;
@@ -12,12 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
-
 @Controller
 public class NoteController {
 
-@Autowired
+    @Autowired
     UserService userService;
 
     @Autowired
@@ -26,14 +23,28 @@ public class NoteController {
     @Autowired
     NoteService noteService;
 
+    String orderBy = "";
+
 
     @RequestMapping(value = "/notes", method = RequestMethod.GET)
-    public String getNotes(@ModelAttribute("model") ModelMap model, Authentication authentication) {
+    public String getNotes(@ModelAttribute("model") ModelMap model, Authentication authentication,@RequestParam(name = "orderBy", defaultValue = "alphabetical") String sort) {
         MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
         User user = myUserDetails.getUser();
-        model.addAttribute("noteList", noteService.getUserNotes(user));
+        switch(sort) {
+            case "alphabetical":
+                model.addAttribute("noteList", noteService.findAllByUserOrderByTitle(user));
+                break;
+            case "byImportance":
+                model.addAttribute("noteList", noteService.findAllByUserOrderByImportanceDesc(user));
+                break;
+            case "byDate":
+                model.addAttribute("noteList", noteService.findAllByUserOrderByCreatedDesc(user));
+                break;
+        }
+        orderBy = sort;
         return "index";
     }
+
     @RequestMapping(value = "/notes", method = RequestMethod.POST)
     public String addNote(@ModelAttribute("note") Note note, Authentication authentication) {
         if (null != note) {
@@ -42,15 +53,15 @@ public class NoteController {
             note.setUser(user);
             noteService.addNote(note);
         }
-        return "redirect:/notes";
+        return "redirect:/notes?orderBy=" + orderBy;
     }
-    @DeleteMapping("/notes/{id}")
+    @RequestMapping(value = "/notes/{id}", method = RequestMethod.DELETE)
     public String deleteBook(@PathVariable Integer id, @ModelAttribute("model") ModelMap model, Authentication authentication) {
         MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
         User user = myUserDetails.getUser();
         noteService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
         noteService.deleteById(id);
-        model.addAttribute("noteList", noteService.getUserNotes(user));
+        model.addAttribute("noteList", noteService.findAllByUser(user));
         return "index";
     }
 
@@ -60,7 +71,7 @@ public class NoteController {
         MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
         User user = myUserDetails.getUser();
         noteService.updateNote(id, title, context);
-        model.addAttribute("noteList", noteService.getUserNotes(user));
+        model.addAttribute("noteList", noteService.findAllByUser(user));
         return "index";
     }
 }

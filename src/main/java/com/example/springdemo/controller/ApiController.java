@@ -6,7 +6,6 @@ import com.example.springdemo.entity.User;
 import com.example.springdemo.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class ApiController {
     public List<Note> getUserNotes(Authentication authentication) {
         MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
         User user = myUserDetails.getUser();
-        return noteService.getUserNotes(user);
+        return noteService.findAllByUser(user);
     }
 
     @RequestMapping( value = "/api/notes/{id}", method = RequestMethod.GET)

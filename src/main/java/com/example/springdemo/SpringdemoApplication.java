@@ -47,9 +47,9 @@ public class SpringdemoApplication {
         User user = new User("user", "user@gmail.com", passwordEncoder.encode("user1234"));
         User admin = new User("admin", "admin@gmail.com", passwordEncoder.encode("admin1234"));
         Note userNote = new Note("usernote1","usernote1",user,2);
-        Note adminNote = new Note("adminnote1","adminnote1",admin,1);
-        Note adminNote2 = new Note("adminnote2","adminnote2",admin,2);
-        Note adminNote3 = new Note("adminnote3","adminnote3",admin,3);
+        Note adminNote = new Note("adminnote3","adminnote2",admin,3);
+        Note adminNote2 = new Note("adminnote2","adminnote3",admin,1);
+        Note adminNote3 = new Note("adminnote1","adminnote1",admin,2);
 
         List<User> users = Arrays.asList(user,admin);
         userRepository.saveAll(users);

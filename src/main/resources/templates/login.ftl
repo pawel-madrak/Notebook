@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <title>Note managing app</title>
     <link href="styles/styles.css" rel="stylesheet"/>
-    <script src="scripts/scripts.js" defer></script>
+    <script src="scripts/loginScripts.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 </head>
 <body>

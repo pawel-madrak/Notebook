@@ -1,6 +1,9 @@
 package com.example.springdemo.entity;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Entity
@@ -10,13 +13,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+
     @Column(name = "username", nullable = false)
+    @NotBlank(message = "Login cannot be empty")
     private String username;
 
     @Column(name = "email", nullable = false)
+    @Email(message = "Email should be valid")
     private String email;
 
     @Column(name = "password", nullable = false)
+    @NotBlank(message = "Password cannot be empty")
     private String password;
 
 

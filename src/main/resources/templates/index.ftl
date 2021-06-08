@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <title>Note managing app</title>
     <link href="styles/styles.css" rel="stylesheet"/>
-    <script src="scripts/scripts.js" defer></script>
+    <script src="scripts/indexScripts.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
 </head>
 <body>
@@ -22,6 +22,11 @@
     <a href="#"  note-add-button onclick="showAddModal()">Add note</a>
 </div>
 <div id="content">
+    <select name="sorting" id="sorting" <#--onchange="location = this.value;"-->>
+        <option value="alphabetical" >Alphabetical</option>
+        <option value="byImportance">By Importance</option>
+        <option value="byDate" >By Date</option>
+    </select>
     <table class="datatable">
         <tr>
             <th>title</th>
@@ -57,7 +62,7 @@
         <label for="" class="modal__label">Enter title: </label>
         <input type="text" class="modal__input" name="title" required>
         <label for="" class="modal__label">Enter context: </label>
-        <textarea  rows="40" cols="80" class="modal__input" name="context">Input your note.. </textarea>
+        <textarea  rows="40" cols="80" class="modal__input" name="context"></textarea>
         <label for="importance">Select an importance: </label>
         <select name="importance" id="importance" required>
             <option value="1">Low</option>
@@ -75,7 +80,7 @@
         <label for="" class="modal__label">Enter title: </label>
         <input type="text" class="modal__input" name="title" id="title" required>
         <label for="" class="modal__label">Enter context: </label>
-        <textarea  rows="40" cols="80" class="modal__input" name="edtContext" id="context">Input your note.. </textarea>
+        <textarea  rows="40" cols="80" class="modal__input" name="edtContext" id="context"></textarea>
         <button type="button" value="Update" class="modal__button-submit" data-button-submit onclick="editNote()">Update</button>
     </form>
 </div>
