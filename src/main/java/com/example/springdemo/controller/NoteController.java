@@ -23,8 +23,6 @@ public class NoteController {
     @Autowired
     NoteService noteService;
 
-    String orderBy = "";
-
 
     @RequestMapping(value = "/notes", method = RequestMethod.GET)
     public String getNotes(@ModelAttribute("model") ModelMap model, Authentication authentication,@RequestParam(name = "orderBy", defaultValue = "alphabetical") String sort) {
@@ -41,7 +39,6 @@ public class NoteController {
                 model.addAttribute("noteList", noteService.findAllByUserOrderByCreatedDesc(user));
                 break;
         }
-        orderBy = sort;
         return "index";
     }
 
@@ -53,7 +50,7 @@ public class NoteController {
             note.setUser(user);
             noteService.addNote(note);
         }
-        return "redirect:/notes?orderBy=" + orderBy;
+        return "redirect:/notes";
     }
     @RequestMapping(value = "/notes/{id}", method = RequestMethod.DELETE)
     public String deleteBook(@PathVariable Integer id, @ModelAttribute("model") ModelMap model, Authentication authentication) {

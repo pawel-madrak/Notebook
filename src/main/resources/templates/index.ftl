@@ -14,8 +14,8 @@
 <div>
     <form  method="post" action="/logout">
         <button class="modal__button-submit" type="submit">Logout</button>
-
     </form>
+    <a href="/profile">Profile</a>
 </div>
     </div>
 <div class="addnote">

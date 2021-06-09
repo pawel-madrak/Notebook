@@ -5,7 +5,7 @@ const selectedNote = document.querySelectorAll(".box");
 const delButton = document.querySelector(".button-del");
 const edtButton = document.querySelector(".button-edt");
 const sortingSelect = document.getElementById('sorting');
-idOfNote = "";
+let idOfNote = "";
 
 const showAddModal = () => addModal.classList.remove("modal--hidden");
 const showUpdateModal = () => updateModal.classList.remove("modal--hidden");
@@ -43,12 +43,13 @@ function editNote() {
 
 sortingSelect.addEventListener('change', () => {
     location = "/notes?orderBy=" + sortingSelect.value;
+
 })
 
 window.addEventListener('load', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get('orderBy');
-    if (myParam !== null) {
-        sortingSelect.value = myParam;
+    const requestParam = urlParams.get('orderBy');
+    if (requestParam !== null) {
+        sortingSelect.value = requestParam;
     }
 });
