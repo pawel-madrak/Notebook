@@ -10,7 +10,7 @@ I recommend using Docker.
 To start your local mysql db write this "docker run -p 0.0.0.0:3307:3306 --name mysql-notesdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=notesdb -d mysql"  
 in command line.  
 Next you need to configure connection to this db.  
-Ex. in IntelliJ ![configuration] (https://gyazo.com/31132aea48e0ccbb547b0383a0c2b370)  
+Ex. in IntelliJ [configuration] (https://gyazo.com/31132aea48e0ccbb547b0383a0c2b370)  
 Now we can run this app :)  
 
 ## Technologies
