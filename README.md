@@ -13,9 +13,9 @@ Next you need to configure connection to this db.
 Ex. in IntelliJ [configuration](https://gyazo.com/31132aea48e0ccbb547b0383a0c2b370)  
 Now we can run this app :)  
 
-Build-in Credentials:  
-login: admin  
-password: admin1234  
+Build-in credentials:  
+Login: admin  
+Password: admin1234  
 
 ## Technologies
 
