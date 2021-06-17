@@ -1,4 +1,4 @@
-package com.example.springdemo.entity;
+package com.example.notebook.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

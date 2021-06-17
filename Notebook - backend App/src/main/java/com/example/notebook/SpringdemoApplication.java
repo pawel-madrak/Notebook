@@ -1,6 +1,6 @@
-package com.example.springdemo;
-import com.example.springdemo.entity.User;
-import com.example.springdemo.service.UserService;
+package com.example.notebook;
+import com.example.notebook.entity.User;
+import com.example.notebook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

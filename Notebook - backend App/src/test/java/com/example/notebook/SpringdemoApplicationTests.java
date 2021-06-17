@@ -1,6 +1,6 @@
-package com.example.springdemo;
+package com.example.notebook;
 
-import com.example.springdemo.service.UserService;
+import com.example.notebook.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

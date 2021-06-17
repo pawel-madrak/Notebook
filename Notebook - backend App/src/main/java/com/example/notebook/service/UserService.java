@@ -1,7 +1,7 @@
-package com.example.springdemo.service;
-import com.example.springdemo.entity.User;
-import com.example.springdemo.exceptions.UserAlreadyExistException;
-import com.example.springdemo.repository.UserRepository;
+package com.example.notebook.service;
+import com.example.notebook.entity.User;
+import com.example.notebook.exceptions.UserAlreadyExistException;
+import com.example.notebook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

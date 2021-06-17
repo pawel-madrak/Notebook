@@ -1,7 +1,7 @@
-package com.example.springdemo.service;
+package com.example.notebook.service;
 
-import com.example.springdemo.entity.MyUserDetails;
-import com.example.springdemo.entity.User;
+import com.example.notebook.entity.MyUserDetails;
+import com.example.notebook.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

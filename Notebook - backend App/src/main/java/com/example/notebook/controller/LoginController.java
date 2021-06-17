@@ -1,7 +1,7 @@
-package com.example.springdemo.controller;
-import com.example.springdemo.entity.User;
-import com.example.springdemo.exceptions.UserAlreadyExistException;
-import com.example.springdemo.service.UserService;
+package com.example.notebook.controller;
+import com.example.notebook.entity.User;
+import com.example.notebook.exceptions.UserAlreadyExistException;
+import com.example.notebook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

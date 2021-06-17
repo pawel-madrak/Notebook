@@ -1,8 +1,8 @@
-package com.example.springdemo.service;
-import com.example.springdemo.entity.Note;
-import com.example.springdemo.entity.User;
-import com.example.springdemo.repository.NoteRepository;
-import com.example.springdemo.repository.UserRepository;
+package com.example.notebook.service;
+import com.example.notebook.entity.Note;
+import com.example.notebook.entity.User;
+import com.example.notebook.repository.NoteRepository;
+import com.example.notebook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;

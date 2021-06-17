@@ -1,6 +1,6 @@
-package com.example.springdemo;
+package com.example.notebook;
 
-import com.example.springdemo.service.UserService;
+import com.example.notebook.service.UserService;
 import org.junit.jupiter.api.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;

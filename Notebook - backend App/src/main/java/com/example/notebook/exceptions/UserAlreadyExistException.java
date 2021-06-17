@@ -1,4 +1,4 @@
-package com.example.springdemo.exceptions;
+package com.example.notebook.exceptions;
 
 public final class UserAlreadyExistException extends RuntimeException {
 

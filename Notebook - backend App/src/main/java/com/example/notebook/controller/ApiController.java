@@ -1,10 +1,10 @@
-package com.example.springdemo.controller;
+package com.example.notebook.controller;
 
-import com.example.springdemo.entity.MyUserDetails;
-import com.example.springdemo.entity.Note;
-import com.example.springdemo.entity.User;
-import com.example.springdemo.service.NoteService;
-import com.example.springdemo.service.UserService;
+import com.example.notebook.entity.MyUserDetails;
+import com.example.notebook.entity.Note;
+import com.example.notebook.entity.User;
+import com.example.notebook.service.NoteService;
+import com.example.notebook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
