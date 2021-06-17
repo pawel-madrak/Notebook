@@ -39,12 +39,19 @@ public class NoteService {
         noteRepository.deleteById(id);
     }
 
+    public void deleteByUserAndTitle(User user, String title) {
+        noteRepository.deleteByUserAndTitle(user, title);
+    }
+
     public List<Note> findAllByUser(User user) {
        return noteRepository.findAllByUser(user);
     }
 
     public Optional<Note> findByUserAndId(User user, Integer id) {
         return Optional.ofNullable(noteRepository.findByUserAndId(user, id));
+    }
+    public Optional<Note> findByUserAndTitle(User user, String title){
+        return Optional.ofNullable(noteRepository.findByUserAndTitle(user, title));
     }
     public List<Note> findAllByUserOrderByImportanceDesc(User user){
         return  noteRepository.findAllByUserOrderByImportanceDesc(user);
