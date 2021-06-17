@@ -1,11 +1,10 @@
 package com.example.springdemo.service;
-
-import com.example.springdemo.entity.Note;
 import com.example.springdemo.entity.User;
+import com.example.springdemo.exceptions.UserAlreadyExistException;
 import com.example.springdemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -28,5 +27,25 @@ public class UserService {
 
     public List<User> findAllByUsername(String username){
         return userRepository.findAllByUsername(username);
+    }
+
+    public void saveUser(User user) throws UserAlreadyExistException {
+        if (userExists(user.getUsername()))  {
+            throw new UserAlreadyExistException("There is an account with that username: "
+                    + user.getUsername());
+        }
+        userRepository.save(user);
+    }
+    public void saveAllUsers(List<User> users) throws UserAlreadyExistException {
+
+        users.forEach(user ->  {
+        if (userExists(user.getUsername())) {
+            throw new UserAlreadyExistException("There is an account with that username: "
+                    + user.getUsername());
+        }});
+        userRepository.saveAll(users);
+    }
+    private boolean userExists(String username) {
+        return userRepository.findByUsername(username) != null;
     }
 }

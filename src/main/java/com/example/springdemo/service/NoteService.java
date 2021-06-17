@@ -1,13 +1,12 @@
 package com.example.springdemo.service;
-
-
 import com.example.springdemo.entity.Note;
-
 import com.example.springdemo.entity.User;
 import com.example.springdemo.repository.NoteRepository;
 import com.example.springdemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -56,4 +55,19 @@ public class NoteService {
     public List<Note> findAllByUserOrderByTitle(User user){
         return  noteRepository.findAllByUserOrderByTitle(user);
     }
+
+    public void sortNotes(ModelMap model, String sorting, User user){
+        switch(sorting) {
+            case "alphabetical":
+                model.addAttribute("noteList", findAllByUserOrderByTitle(user));
+                break;
+            case "byImportance":
+                model.addAttribute("noteList", findAllByUserOrderByImportanceDesc(user));
+                break;
+            case "byDate":
+                model.addAttribute("noteList", findAllByUserOrderByCreatedDesc(user));
+                break;
+        }
+    }
+
 }

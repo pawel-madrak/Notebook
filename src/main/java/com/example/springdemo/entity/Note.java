@@ -2,6 +2,7 @@ package com.example.springdemo.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 
@@ -13,6 +14,7 @@ public class Note {
     private Integer id;
 
     @Column(name = "title", nullable = false)
+    @NotEmpty
     @NotBlank(message = "Title cannot be empty")
     private String title;
 

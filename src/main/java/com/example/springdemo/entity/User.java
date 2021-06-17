@@ -4,7 +4,7 @@ package com.example.springdemo.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.Set;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class User {
@@ -14,15 +14,19 @@ public class User {
     private Integer id;
 
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
+    @NotEmpty
     @NotBlank(message = "Login cannot be empty")
     private String username;
 
     @Column(name = "email", nullable = false)
     @Email(message = "Email should be valid")
+    @NotEmpty
+    @NotBlank(message = "Email cannot be empty")
     private String email;
 
     @Column(name = "password", nullable = false)
+    @NotEmpty
     @NotBlank(message = "Password cannot be empty")
     private String password;
 

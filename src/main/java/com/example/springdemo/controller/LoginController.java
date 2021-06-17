@@ -1,18 +1,17 @@
 package com.example.springdemo.controller;
-
 import com.example.springdemo.entity.User;
-import com.example.springdemo.repository.UserRepository;
+import com.example.springdemo.exceptions.UserAlreadyExistException;
+import com.example.springdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.security.Principal;
+import javax.validation.Valid;
+
 
 @Controller
 public class LoginController {
@@ -21,7 +20,7 @@ public class LoginController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET,RequestMethod.POST})
     public String login() {
@@ -29,11 +28,13 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/add-user", method = RequestMethod.POST)
-    public String addNote(@ModelAttribute("new-user") User user) {
-        if (null != user) {
+    public String addNote(@ModelAttribute("new-user") @Valid User user) {
+       try{
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userRepository.save(user);
-        }
+            userService.saveUser(user);
+        } catch (UserAlreadyExistException uaeEx) {
+           System.out.println(uaeEx);
+       }
         return "redirect:/login";
     }
     @RequestMapping(value = "/", method = RequestMethod.GET)

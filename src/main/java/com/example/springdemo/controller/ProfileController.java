@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 public class ProfileController {
 
@@ -28,11 +30,13 @@ public class ProfileController {
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.PUT)
-    public String updateNote(@RequestParam("username") String username, @RequestParam("email") String email, @RequestParam("password") String password, @ModelAttribute("model") ModelMap model, Authentication authentication){
+    public String updateNote( @RequestParam("email") @Valid String email, @RequestParam("password") @Valid String password, @ModelAttribute("model") ModelMap model, Authentication authentication){
         MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
         User user = myUserDetails.getUser();
-        userService.updateUser(username,email,passwordEncoder.encode(password));
-        model.addAttribute("user", userService.findByUsername(user.getUsername()));
+        if (password != null && !password.isEmpty()) {
+            userService.updateUser( user.getUsername(),email, passwordEncoder.encode(password));
+        }
+        model.addAttribute("user", userService.findAllByUsername(user.getUsername()));
         return "profile";
     }
 }
